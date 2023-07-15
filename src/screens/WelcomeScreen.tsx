@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, View } from 'react-native';
+import { ImageBackground, StyleSheet, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Box, Button, Heading, HStack, Text, VStack } from 'native-base';
 import { grass, playerScreenbg, welcomeScreenbg } from '../assets/images';
@@ -40,24 +40,34 @@ export const WelcomeScreen = (props: any) => {
                 <Box bottom={'28%'}>
 
                     <HStack space={10} alignSelf={'center'} mb={'10%'} >
-                        <VStack justifyContent={'center'} alignItems={'center'}>
-                            <SvgXml xml={football} />
-                            <Text fontWeight={'bold'} color={'#fff'}>FOOTBALL</Text>
-                        </VStack>
-                        <VStack justifyContent={'center'} alignItems={'center'}>
-                            <SvgXml xml={cricketball} />
-                            <Heading fontSize={'lg'} fontWeight={'bold'} color={'#fff'}>CRICKET</Heading>
-                        </VStack>
-                        <VStack justifyContent={'center'} alignItems={'center'}>
-                            <SvgXml xml={tennis} />
-                            <Text color={'#fff'}>TENNIS</Text>
-                        </VStack>
+                        <TouchableOpacity>
+
+                            <VStack justifyContent={'center'} alignItems={'center'}>
+                                <SvgXml xml={football} />
+                                <Text fontWeight={'bold'} color={'#fff'}>FOOTBALL</Text>
+                            </VStack>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+
+                            <VStack justifyContent={'center'} alignItems={'center'}>
+                                <SvgXml xml={cricketball} />
+                                <Heading fontSize={'lg'} fontWeight={'bold'} color={'#fff'}>CRICKET</Heading>
+                            </VStack>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+
+                            <VStack justifyContent={'center'} alignItems={'center'}>
+                                <SvgXml xml={tennis} />
+                                <Text color={'#fff'}>TENNIS</Text>
+                            </VStack>
+                        </TouchableOpacity>
 
                     </HStack>
                     <Button
                         onPress={() => props.navigation.navigate('LandingPage')}
                         p={4}
                         mb={'15%'}
+                        _pressed={{ bg: '#50B05F95' }}
                         bg={'#50B05F'}
                         alignSelf={'center'}
                         w={'75%'}
