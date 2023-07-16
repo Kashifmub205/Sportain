@@ -1,6 +1,6 @@
-import { ImageBackground, StyleSheet, View } from 'react-native';
+import { ImageBackground, StyleSheet, View, ScrollView } from 'react-native';
 import { bg1, bg2, bg3, bg4, bg5, LandingBg } from '../assets/images';
-import { Box, Heading, HStack, Text, Button, ScrollView } from 'native-base';
+import { Box, Heading, HStack, Text, Button } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 import { arrow, logo } from '../assets/Svgs/SvgGroup';
 import {
@@ -28,16 +28,14 @@ export const GetStarted = (props: any) => {
     return (
         <Box flex={1} bg={'#000'} safeAreaTop >
             <ScrollView
-                flex={1}
-                ref={scrollViewRef}
-                onScroll={handleScroll}
-                scrollEventThrottle={1} // Adjust throttle value as per your requirements
-                style={{ marginTop: scrollPosition }}
+                contentContainerStyle={{ flexGrow: 1 }}
+                style={{ flex: 1 }}
+
             >
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg1}
-                    style={{ height: heightPercentageToDP(100) }}>
+                    style={{ height: heightPercentageToDP(100), zIndex: 2 }}>
                     <Box >
                         <SvgXml xml={logo} style={{ alignSelf: 'center' }} />
                         <Heading fontSize={'5xl'} color={'#fff'} alignSelf={'center'}>
@@ -59,7 +57,7 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     source={bg2}
                     resizeMode={'contain'}
-                    style={{ height: heightPercentageToDP(100), bottom: '9%' }}>
+                    style={{ height: heightPercentageToDP(100), zIndex: 10, bottom: '9%' }}>
                     <Box
                         justifyContent={'center'}
                         alignItems={'center'}
@@ -89,7 +87,7 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg3}
-                    style={{ height: heightPercentageToDP(100), bottom: '10%' }}>
+                    style={{ height: heightPercentageToDP(100) }}>
                     <Box w={'70%'} left={20} bottom={'5%'}>
                         <Text
                             fontWeight={'bold'}
@@ -116,7 +114,7 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg5}
-                    style={{ height: heightPercentageToDP(100), bottom: '13%' }}>
+                    style={{ height: heightPercentageToDP(100) }}>
                     <Box top={'50%'}>
                         <Heading
                             fontSize="4xl"
@@ -152,7 +150,7 @@ export const GetStarted = (props: any) => {
                     source={bg4}
                     style={{
                         height: heightPercentageToDP(90),
-                        bottom: '16%',
+                        // bottom: '16%',
 
                     }}>
                     <Box>

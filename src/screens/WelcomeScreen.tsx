@@ -11,15 +11,17 @@ export const WelcomeScreen = (props: any) => {
             {/* <ImageBackground source={playerScreenbg} style={{ height: 650, width: 650, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', zIndex: 12 }}> */}
             <Box flex={1} safeAreaTop>
                 <Box justifyContent={'space-between'}>
-                    <Heading
+                    <Text
                         mt={2}
                         mb={5}
                         alignSelf={'center'}
                         alignItems={'center'}
                         color={'#fff'}
-                        fontSize={'4xl'}>
+                        // fontFamily={'Metropolis-Regular'}
+                        fontSize={'4xl'}
+                    >
                         SPORTAIN
-                    </Heading>
+                    </Text>
                     <Text
                         alignSelf={'center'}
                         alignItems={'center'}
