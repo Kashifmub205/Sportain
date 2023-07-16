@@ -1,7 +1,6 @@
 const welcomeScreenbg = require('./WelcomeBackground.png')
-const playerScreenbg = require('./playerbg.png')
 const grass=require('./grass.png')
-const LandingBg=require('./LandingBg.png')
+
 const bg1=require('./bg1.png')
 const bg2=require('./bg2.png')
 const bg3=require('./bg3.png')
@@ -14,4 +13,4 @@ const cashBg=require('./cashBg.png')
 const phone=require('./phone.png')
 const colors=require('./colors.png')
 const carousel=require('./carousel.png')
-export { welcomeScreenbg, playerScreenbg, grass, LandingBg, bg1, bg2,bg3, bg4, bg5, bg6,cricket, coinBg, cashBg,phone, colors, carousel}
+export { welcomeScreenbg, grass, bg1, bg2,bg3, bg4, bg5, bg6,cricket, coinBg, cashBg,phone, colors, carousel}

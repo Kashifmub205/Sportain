@@ -119,7 +119,7 @@ export const Features = (props: any) => {
                             alignSelf="center"
                             showsHorizontalScrollIndicator={false}
                             px={4}>
-                            <HStack space={8} alignSelf="center">
+                            <HStack alignSelf="center">
                                 <TouchableOpacity>
                                     <Box
                                         h={heightPercentageToDP(20)}
@@ -169,7 +169,7 @@ export const Features = (props: any) => {
                         </ScrollView>
                     </Box>
                     <Button
-                        onPress={() => props.navigation.navigate('WelcomeScreen')}
+                        onPress={() => props.navigation.navigate('GetStarted')}
                         p={4}
                         mb={'10%'}
                         _pressed={{ bg: '#50B05F95' }}

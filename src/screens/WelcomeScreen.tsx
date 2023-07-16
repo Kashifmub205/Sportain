@@ -11,17 +11,15 @@ export const WelcomeScreen = (props: any) => {
             {/* <ImageBackground source={playerScreenbg} style={{ height: 650, width: 650, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', zIndex: 12 }}> */}
             <Box flex={1} safeAreaTop>
                 <Box justifyContent={'space-between'}>
-                    <Text
+                    <Heading
                         mt={2}
                         mb={5}
                         alignSelf={'center'}
                         alignItems={'center'}
                         color={'#fff'}
-                        // fontFamily={'Metropolis-Regular'}
-                        fontSize={'4xl'}
-                    >
+                        fontSize={'4xl'}>
                         SPORTAIN
-                    </Text>
+                    </Heading>
                     <Text
                         alignSelf={'center'}
                         alignItems={'center'}
@@ -66,7 +64,7 @@ export const WelcomeScreen = (props: any) => {
 
                     </HStack>
                     <Button
-                        onPress={() => props.navigation.navigate('LandingPage')}
+                        onPress={() => props.navigation.navigate('GetStarted')}
                         p={4}
                         mb={'15%'}
                         _pressed={{ bg: '#50B05F95' }}
