@@ -1,10 +1,5 @@
-import {
-    ImageBackground,
-    StyleSheet,
-    TouchableOpacity,
-    View,
-} from 'react-native';
-import React, { useRef } from 'react';
+import { ImageBackground, TouchableOpacity, FlatList } from 'react-native';
+import React, { useState } from 'react';
 import {
     Box,
     Heading,
@@ -13,19 +8,49 @@ import {
     Text,
     Image,
     Button,
-    ScrollView,
+    Toast,
 } from 'native-base';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
-import { bg5, carousel, colors } from '../assets/images';
+import { carousel, colors } from '../assets/images';
 import { SvgXml } from 'react-native-svg';
-import { copy, logo } from '../assets/Svgs/SvgGroup';
-import Carousel from 'react-native-snap-carousel';
-import { ViewPropTypes } from 'deprecated-react-native-prop-types';
+import { copy, logo, muchmore } from '../assets/Svgs/SvgGroup';
 
+import { metropolis, metropolisBold } from '../assets/fonts';
+import Clipboard from '@react-native-community/clipboard';
 export const Features = (props: any) => {
+    const [code, setcode] = useState('');
 
+    const handleCopyText = () => {
+        Clipboard.setString(code);
+        const success = Clipboard.hasString();
+        if (success) {
+            console.log('Text copied to clipboard!');
+            Toast.show({
+                description: 'Text copied to clipboard!',
+            });
+        } else {
+            console.log('Failed to copy text to clipboard!');
+        }
+    };
 
-
+    const tempArray = [
+        {
+            image: carousel,
+            text: 'MARKET PLACE',
+        },
+        {
+            image: carousel,
+            text: 'MEET YOUR STARS',
+        },
+        {
+            image: carousel,
+            text: 'TALENT HUNT',
+        },
+        {
+            svg: true,
+            text: 'MUCH MORE...',
+        },
+    ];
     return (
         <Box flex={1} bg={'#000'} safeAreaTop>
             <ImageBackground
@@ -37,8 +62,8 @@ export const Features = (props: any) => {
                 }}>
                 <Box justifyContent={'space-between'} height={heightPercentageToDP(90)}>
                     <Box alignSelf={'center'} safeAreaTop>
-                        <Text left={2} mb={2} color={'#FFFFFF99'}>
-                            WALLLET ADDRESS
+                        <Text fontFamily={metropolis} left={2} mb={2} color={'#FFFFFF99'}>
+                            WALLET ADDRESS
                         </Text>
                         <HStack
                             borderLeftRadius={'full'}
@@ -46,40 +71,57 @@ export const Features = (props: any) => {
                             w={'85%'}
                             alignItems={'center'}>
                             <Input
-                                p={3}
+                                p={1.5}
+                                value={code}
+                                fontFamily={metropolisBold}
+                                onChangeText={text => setcode(text)}
+                                pl={4}
                                 _focus={{ bg: '#52C03A2B', borderColor: '#52C03A50' }}
                                 rounded={'full'}
                                 color={'#fff'}
                                 borderWidth={0}
-                                w={'70%'}
+                                w={'75%'}
                                 InputRightElement={
-                                    <TouchableOpacity style={{ right: '100%' }}>
+                                    <TouchableOpacity
+                                        onPress={handleCopyText}
+                                        style={{ right: '100%' }}>
                                         <SvgXml xml={copy} />
                                     </TouchableOpacity>
                                 }
                                 bg={'#52C03A50'}
                             />
-                            <Box right={1} w={'30%'}>
+                            <Box right={1} w={'25%'} borderRightRadius={'full'}>
                                 <HStack
-                                    space={3}
+                                    space={2}
                                     justifyContent={'center'}
                                     alignItems={'center'}>
-                                    <SvgXml xml={logo} height={30} width={30} />
                                     <Text fontWeight={'bold'} color={'#fff'}>
                                         100
                                     </Text>
+                                    <SvgXml xml={logo} height={30} width={30} />
                                 </HStack>
                             </Box>
                         </HStack>
                     </Box>
                     <Box>
-                        <Text fontSize={'lg'} alignSelf={'center'} color={'#fff'}>
+                        <Text
+                            fontSize={'lg'}
+                            fontFamily={metropolis}
+                            alignSelf={'center'}
+                            color={'#fff'}>
                             YOU WON
                         </Text>
-                        <HStack justifyContent={'center'} alignItems={'center'} mb={6}>
-                            <SvgXml xml={logo} height={40} width={40} />
-                            <Heading fontSize={'3xl'} color={'#fff'}>
-                                103 TOKENS
+                        <HStack
+                            space={1}
+                            justifyContent={'center'}
+                            alignItems={'center'}
+                            mb={6}>
+                            <SvgXml xml={logo} height={40} width={40} style={{ bottom: 2 }} />
+                            <Heading
+                                fontFamily={metropolisBold}
+                                fontSize={'3xl'}
+                                color={'#fff'}>
+                                100 TOKENS
                             </Heading>
                         </HStack>
                         <Text
@@ -87,6 +129,7 @@ export const Features = (props: any) => {
                             alignSelf={'center'}
                             fontSize={'lg'}
                             color={'#fff'}
+                            fontFamily={metropolisBold}
                             fontWeight={'bold'}>
                             CONGRATULATIONS
                         </Text>
@@ -94,15 +137,23 @@ export const Features = (props: any) => {
                             color={'#fff'}
                             lineHeight={20}
                             fontSize={'lg'}
+                            fontFamily={metropolis}
                             alignSelf={'center'}
                             w={'60%'}
                             textAlign={'center'}>
                             {`You are now part of the Sportain Community`.toUpperCase()}
                         </Text>
                     </Box>
-                    <Box top={4}>
-                        <Text mb={1} fontWeight={'bold'} alignSelf={'flex-start'} px={4} color={'#fff'}>
-                            MORE TO COME SOON
+                    <Box top={'5%'}>
+                        <Text
+                            mb={1}
+                            fontWeight={'bold'}
+                            alignSelf={'flex-start'}
+                            px={4}
+                            fontFamily={metropolisBold}
+                            // top={'25%'}
+                            color={'#fff'}>
+                            MORE TO COME SOON ...
                         </Text>
                         {/* <Box>
                             <Carousel
@@ -113,72 +164,86 @@ export const Features = (props: any) => {
                                 itemWidth={200}
                             />
                         </Box> */}
-
-                        <ScrollView
+                        <FlatList
                             horizontal
-                            alignSelf="center"
+                            data={tempArray}
+                            keyExtractor={(item: any, index: any) => index.toString()}
                             showsHorizontalScrollIndicator={false}
-                            px={4}>
-                            <HStack alignSelf="center">
-                                <TouchableOpacity>
-                                    <Box
-                                        h={heightPercentageToDP(20)}
-                                        w={heightPercentageToDP(20)}
-                                        alignItems="center"
-                                        justifyContent="center">
-                                        <Image
-                                            alt={'txt'}
-                                            source={carousel}
-                                            resizeMode="contain"
-                                            maxHeight={heightPercentageToDP(19)}
-                                            maxWidth={heightPercentageToDP(19)}
-                                        />
+                            contentContainerStyle={{ paddingHorizontal: 4 }}
+                            renderItem={({ item }) => (
+                                <TouchableOpacity
+                                    style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                    <Box>
+                                        {item.svg ? (
+                                            <Box position="relative">
+                                                <SvgXml
+                                                    height={heightPercentageToDP(20)}
+                                                    width={heightPercentageToDP(20)}
+                                                    // style={{ top: 10 }}
+                                                    xml={muchmore}
+                                                />
+                                                <Box position="absolute" zIndex={10} bottom={0} width="100%">
+                                                    <Heading
+                                                        width="100%"
+                                                        alignSelf="center"
+                                                        textAlign="center"
+                                                        fontFamily={metropolisBold}
+                                                        fontSize="md"
+                                                        bottom={4}
+                                                        color="#fff"
+                                                    >
+                                                        {item.text}
+                                                    </Heading>
+                                                </Box>
+                                            </Box>
+                                        ) : (
+                                            <Box position="relative">
+                                                <Image
+                                                    alt="txt"
+                                                    top={0}
+                                                    p={4}
+                                                    source={item.image}
+                                                    resizeMode="contain"
+                                                    height={heightPercentageToDP(18)}
+                                                    width={heightPercentageToDP(18)}
+                                                />
+                                                <Box position="absolute" zIndex={10} bottom={0} width="100%">
+                                                    <Heading
+                                                        width="100%"
+                                                        alignSelf="center"
+                                                        textAlign="center"
+                                                        fontWeight="bold"
+                                                        fontFamily={metropolisBold}
+                                                        fontSize="md"
+                                                        px={2}
+                                                        bottom={2}
+                                                        color="#fff"
+                                                    >
+                                                        {item.text}
+
+                                                    </Heading>
+                                                </Box>
+                                            </Box>
+                                        )}
                                     </Box>
+
+
+                                    {/* </Box> */}
                                 </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <Box
-                                        h={heightPercentageToDP(20)}
-                                        w={heightPercentageToDP(20)}
-                                        alignItems="center"
-                                        justifyContent="center">
-                                        <Image
-                                            alt={'txt'}
-                                            source={carousel}
-                                            resizeMode="contain"
-                                            maxHeight={heightPercentageToDP(19)}
-                                            maxWidth={heightPercentageToDP(19)}
-                                        />
-                                    </Box>
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <Box
-                                        h={heightPercentageToDP(20)}
-                                        w={heightPercentageToDP(20)}
-                                        alignItems="center"
-                                        justifyContent="center">
-                                        <Image
-                                            alt={'txt'}
-                                            source={carousel}
-                                            resizeMode="contain"
-                                            maxHeight={heightPercentageToDP(19)}
-                                            maxWidth={heightPercentageToDP(19)}
-                                        />
-                                    </Box>
-                                </TouchableOpacity>
-                            </HStack>
-                        </ScrollView>
+                            )}
+                        />
                     </Box>
                     <Button
                         onPress={() => props.navigation.navigate('GetStarted')}
                         p={4}
-                        mb={'10%'}
+                        mb={'5%'}
                         _pressed={{ bg: '#50B05F95' }}
                         bg={'#50B05F'}
                         alignSelf={'center'}
                         w={'75%'}
                         justifyContent={'center'}
                         alignItems={'center'}>
-                        <Text fontWeight={'bold'} color={'#000'} fontSize={'md'}>
+                        <Text fontFamily={metropolis} color={'#000'} fontSize={'md'}>
                             SPORTAIN EXPERIANCE
                         </Text>
                     </Button>

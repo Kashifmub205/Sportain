@@ -1,42 +1,48 @@
-import { ImageBackground, StyleSheet, View } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { bg1, bg2, bg3, bg4, bg5 } from '../assets/images';
 import { Box, Heading, HStack, Text, Button, ScrollView } from 'native-base';
 import { SvgXml } from 'react-native-svg';
-import { arrow, backbutton, logo } from '../assets/Svgs/SvgGroup';
+import { backbutton, logo } from '../assets/Svgs/SvgGroup';
 import {
     heightPercentageToDP,
-    widthPercentageToDP,
 } from 'react-native-responsive-screen';
-import React, { useState, useRef } from 'react';
-import { useIsFocused } from '@react-navigation/native';
+import React, { } from 'react';
+import { metropolisBold, metropolis } from '../assets/fonts';
 export const GetStarted = (props: any) => {
     return (
         <Box flex={1} bg={'#000'} safeAreaTop>
-            <Button
-                bg={'transparent'}
-                w={'10%'}
-                _pressed={{ bg: 'rgba(255,255,255,0.1)s' }}
-                onPress={() => props.navigation.goBack()}
-                top={4}
-                mb={2}
-                left={'3%'}>
-                <SvgXml xml={backbutton} />
-            </Button>
             <ScrollView flex={1}>
+                <Button
+                    bg={'transparent'}
+                    w={'10%'}
+                    _pressed={{ bg: 'rgba(255,255,255,0.1)' }}
+                    onPress={() => props.navigation.goBack()}
+                    top={4}
+                    left={4}>
+                    <SvgXml xml={backbutton} />
+                </Button>
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg1}
                     style={{ height: heightPercentageToDP(100) }}>
                     <Box>
                         <SvgXml xml={logo} style={{ alignSelf: 'center' }} />
-                        <Heading fontSize={'5xl'} color={'#fff'} alignSelf={'center'}>
+                        <Heading
+                            fontFamily={metropolisBold}
+                            fontSize={'5xl'}
+                            color={'#fff'}
+                            alignSelf={'center'}>
                             SPORTAIN
                         </Heading>
                         <Box mt={'10%'} px={10}>
-                            <Text color={'#fff'} fontSize={'lg'}>
+                            <Text fontFamily={metropolis} color={'#fff'} fontSize={'lg'}>
                                 TIME FOR A GAME CHANGER
                             </Text>
-                            <Heading fontSize="4xl" w="100%" color="#59BB5D">
+                            <Heading
+                                fontSize="4xl"
+                                w="100%"
+                                fontFamily={metropolisBold}
+                                color="#59BB5D">
                                 EMBRACE {'\n'}
                                 <Text style={{ color: 'white' }}>SPORTAIN'S {'\n'}</Text>
                                 NEW {'\n'}
@@ -57,18 +63,22 @@ export const GetStarted = (props: any) => {
 
                     // left={'15%'}
                     >
-                        <Text fontSize={'lg'} color={'#FFFFFF'}>
+                        <Text fontFamily={metropolis} fontSize={'lg'} color={'#FFFFFF'}>
                             CONNECT AND ENGAGE!
                         </Text>
                         <Heading
                             fontSize="4xl"
                             // right={12}
-                            px={12}
-                            right={2}
+                            px={10}
+                            fontFamily={metropolisBold}
                             color="#59BB5D"
                             textAlign="right"
                             lineHeight={40}>
-                            <Text style={{ color: 'white' }}>IMMERSE</Text> {'\n'}
+                            <Text style={{ color: 'white' }} fontFamily={metropolisBold}>
+
+                                IMMERSE{'\n'}
+                            </Text>
+
                             IN YOUR COMMUNITY
                         </Heading>
                     </Box>
@@ -76,10 +86,12 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg3}
-                    style={{ height: heightPercentageToDP(100), bottom: '9%' }}>
-                    <Box w={'70%'} left={20} bottom={'5%'}>
+                    style={{ height: heightPercentageToDP(100), bottom: '4%' }}>
+                    <Box w={'70%'} bottom={'8%'}>
                         <Text
                             fontWeight={'bold'}
+                            left={20}
+                            fontFamily={metropolis}
                             fontSize={'lg'}
                             color={'#fff'}
                             textAlign={'right'}>
@@ -87,15 +99,31 @@ export const GetStarted = (props: any) => {
                         </Text>
                     </Box>
                     <Box top={'56%'} px={10}>
-                        <Heading fontSize="4xl" w="70%" color="#59BB5D" mb={5}>
-                            <Text style={{ color: 'white' }}>YOUR</Text> {'\n'}
+                        <Heading
+                            fontFamily={metropolisBold}
+                            fontSize="4xl"
+                            w="70%"
+                            color="#59BB5D"
+                            mb={5}>
+                            <Text fontFamily={metropolisBold} style={{ color: 'white' }}>
+                                YOUR
+                            </Text>{' '}
+                            {'\n'}
                             VOICE {'\n'}
                             MATTERS
                         </Heading>
-                        <Text color={'#fff'} fontWeight={'bold'} fontSize={'xl'}>
+                        <Text
+                            fontFamily={metropolisBold}
+                            color={'#fff'}
+                            fontWeight={'bold'}
+                            fontSize={'xl'}>
                             INTERACTIVE EXPERIENCE
                         </Text>
-                        <Text w={'85%'} color={'#fff'} fontSize={'lg'}>
+                        <Text
+                            w={'95%'}
+                            fontFamily={metropolis}
+                            color={'#fff'}
+                            fontSize={'lg'}>
                             {`"Be more than a spectator! Engage, celebrate & analyze."`.toUpperCase()}
                         </Text>
                     </Box>
@@ -103,19 +131,24 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg5}
-                    style={{ height: heightPercentageToDP(100), bottom: '12%' }}>
-                    <Box top={'50%'}>
+                    style={{ height: heightPercentageToDP(100), bottom: '4%' }}>
+                    <Box top={'55%'}>
                         <Heading
                             fontSize="4xl"
                             w="70%"
                             color="#59BB5D"
                             mb={5}
+                            fontFamily={metropolisBold}
+                            ml={20}
                             textAlign={'right'}
                             lineHeight={40}
-                            left={20}>
-                            <Text style={{ color: 'white', fontWeight: 'bold' }}>
+                        // left={20}
+                        >
+                            <Text
+                                fontFamily={metropolisBold}
+                                style={{ color: 'white', fontWeight: 'bold' }}>
                                 TAKE {'\n'} ACTION
-                            </Text>{' '}
+                            </Text>
                             {'\n'}
                             {` & unlock exclusive rewards`.toUpperCase()}
                         </Heading>
@@ -124,12 +157,17 @@ export const GetStarted = (props: any) => {
                             fontWeight={'bold'}
                             fontSize={'lg'}
                             color={'#fff'}
-                            right={'12%'}
+                            right={'9.5%'}
+                            fontFamily={metropolisBold}
                             textAlign={'right'}>
                             {`Rewards and Offers:`.toUpperCase()}
                             {'\n'}
-                            <Text color={'#fff'} fontWeight={'normal'}>
-                                "Rewards await your passion!"
+                            <Text
+                                fontFamily={metropolis}
+                                fontSize={'lg'}
+                                color={'#fff'}
+                                fontWeight={'normal'}>
+                                {'Rewards await your passion!'.toUpperCase()}
                             </Text>
                         </Text>
                     </Box>
@@ -138,23 +176,40 @@ export const GetStarted = (props: any) => {
                     resizeMode={'contain'}
                     source={bg4}
                     style={{
-                        height: heightPercentageToDP(90),
-                        bottom: '12%',
+                        height: heightPercentageToDP(100),
                     }}>
-                    <Box>
-                        <HStack alignSelf={'center'} right={3}>
-                            <SvgXml xml={logo} style={{ alignSelf: 'center' }} />
-                            <Heading fontSize={'5xl'} color={'#fff'} alignSelf={'center'}>
-                                SPORTAIN
-                            </Heading>
-                        </HStack>
-                        <Text color={'#fff'} alignSelf={'center'} fontSize={'lg'}>
-                            {`Celebrates Cricket community`.toUpperCase()}
-                        </Text>
+                    <Box
+                        justifyContent={'space-between'}
+                        height={heightPercentageToDP(100)}>
+                        <Box>
+                            <HStack alignSelf={'center'} right={3}>
+                                <SvgXml xml={logo} style={{ alignSelf: 'center' }} />
+                                <Heading
+                                    fontFamily={metropolisBold}
+                                    fontSize={'5xl'}
+                                    color={'#fff'}
+                                    alignSelf={'center'}>
+                                    SPORTAIN
+                                </Heading>
+                            </HStack>
+                            <Text
+                                fontFamily={metropolis}
+                                color={'#fff'}
+                                alignSelf={'center'}
+                                fontSize={'lg'}>
+                                {`Celebrates Cricket community`.toUpperCase()}
+                            </Text>
+                        </Box>
+                        <Box>
+                            <Text
+                                fontFamily={metropolis}
+                                color={'#fff'}
+                                alignSelf={'center'}
+                                bottom={5}>
+                                {`@Sportain 2023`.toUpperCase()}
+                            </Text>
+                        </Box>
                     </Box>
-                    <Text color={'#fff'} alignSelf={'center'} top={'80%'}>
-                        {`@Sportain 2023`.toUpperCase()}
-                    </Text>
                 </ImageBackground>
             </ScrollView>
             <Button
@@ -169,8 +224,8 @@ export const GetStarted = (props: any) => {
                 justifyContent={'center'}
                 alignItems={'center'}>
                 <HStack space={3} justifyContent={'center'} alignItems={'center'}>
-                    <Text fontWeight={'bold'} color={'#fff'} fontSize={'md'}>
-                        WHATS'S NEXT?
+                    <Text color={'#000'} fontFamily={metropolis} fontSize={'md'}>
+                        WHAT'S NEXT?
                     </Text>
                 </HStack>
             </Button>
