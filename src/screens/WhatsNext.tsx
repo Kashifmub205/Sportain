@@ -1,5 +1,5 @@
 import { ImageBackground, Linking, Platform } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Heading,
@@ -14,33 +14,9 @@ import { heightPercentageToDP } from 'react-native-responsive-screen';
 import { coinsvg, backbutton } from '../assets/Svgs/SvgGroup';
 import { SvgXml } from 'react-native-svg';
 import { metropolis, metropolisBold } from '../assets/fonts';
-import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 export const WhatsNext = (props: any) => {
   const [redirectToFeatures, setRedirectToFeatures] = useState(false);
-  const navigation = useNavigation();
-  useEffect(() => {
-    const redirectTimeout = setTimeout(() => {
-      if (!redirectToFeatures) {
-        props.navigation.navigate('Features');
-      }
-    }, 1);
-
-    return () => clearTimeout(redirectTimeout);
-  }, [redirectToFeatures, navigation]);
-  useFocusEffect(() => {
-    setRedirectToFeatures(false)
-  });
-  const redirectToStore = async () => {
-    const storeUrl =
-      Platform.OS === 'ios'
-        ? 'https://apps.apple.com/en/app/welthee-wallet/id1562108720'
-        : 'https://play.google.com/store/apps/details?id=com.welthee.wallet&pli=1';
-
-    setRedirectToFeatures(true);
-
-    await Linking.openURL(storeUrl);
-  };
   return (
     <Box flex={1} bg={'#000'} safeAreaTop>
       <ScrollView flex={1}>
@@ -217,7 +193,22 @@ export const WhatsNext = (props: any) => {
           </Box>
         </ImageBackground>
         <Button
-          onPress={redirectToStore}
+          onPress={() => {
+
+            const storeUrl =
+              Platform.OS === 'ios'
+                ? 'https://apps.apple.com/en/app/welthee-wallet/id1562108720'
+                : 'https://play.google.com/store/apps/details?id=com.welthee.wallet&pli=1';
+
+            Linking.openURL(storeUrl).then(() => {
+              return new Promise<void>(resolve => setTimeout(resolve, 500));
+            }).then(() => {
+              props.navigation.navigate('Features');
+            }).catch(error => {
+
+              console.log('Error:', error);
+            });
+          }}
           p={4}
           _pressed={{ bg: '#50B05F95' }}
           bottom={'20%'}
