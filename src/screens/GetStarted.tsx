@@ -11,6 +11,7 @@ import { metropolisBold, metropolis } from '../assets/fonts';
 export const GetStarted = (props: any) => {
     return (
         <Box flex={1} bg={'#000'} safeAreaTop>
+
             <ScrollView flex={1}>
                 <Button
                     bg={'transparent'}
@@ -24,8 +25,8 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg1}
-                    style={{ height: heightPercentageToDP(100) }}>
-                    <Box>
+                    style={{ height: heightPercentageToDP(100), top: '0.5%' }}>
+                    <Box bottom={5}>
                         <SvgXml xml={logo} style={{ alignSelf: 'center' }} />
                         <Heading
                             fontFamily={metropolisBold}
@@ -54,7 +55,7 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     source={bg2}
                     resizeMode={'contain'}
-                    style={{ height: heightPercentageToDP(100), bottom: '8%' }}>
+                    style={{ height: heightPercentageToDP(100), bottom: '7.5%' }}>
                     <Box
                         justifyContent={'center'}
                         alignItems={'center'}
@@ -86,8 +87,8 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg3}
-                    style={{ height: heightPercentageToDP(100), bottom: '4%' }}>
-                    <Box w={'70%'} bottom={'8%'}>
+                    style={{ height: heightPercentageToDP(100), bottom: '5%' }}>
+                    <Box w={'70%'} bottom={'9%'}>
                         <Text
                             fontWeight={'bold'}
                             left={20}
@@ -131,8 +132,8 @@ export const GetStarted = (props: any) => {
                 <ImageBackground
                     resizeMode={'contain'}
                     source={bg5}
-                    style={{ height: heightPercentageToDP(100), bottom: '4%' }}>
-                    <Box top={'55%'}>
+                    style={{ height: heightPercentageToDP(100), bottom: '5%' }}>
+                    <Box top={'58%'}>
                         <Heading
                             fontSize="4xl"
                             w="70%"
@@ -158,6 +159,7 @@ export const GetStarted = (props: any) => {
                             fontSize={'lg'}
                             color={'#fff'}
                             right={'9.5%'}
+                            mt={3}
                             fontFamily={metropolisBold}
                             textAlign={'right'}>
                             {`Rewards and Offers:`.toUpperCase()}
@@ -177,11 +179,13 @@ export const GetStarted = (props: any) => {
                     source={bg4}
                     style={{
                         height: heightPercentageToDP(100),
+                        bottom: '2%'
+
                     }}>
                     <Box
                         justifyContent={'space-between'}
                         height={heightPercentageToDP(100)}>
-                        <Box>
+                        <Box bottom={3}>
                             <HStack alignSelf={'center'} right={3}>
                                 <SvgXml xml={logo} style={{ alignSelf: 'center' }} />
                                 <Heading
@@ -200,12 +204,15 @@ export const GetStarted = (props: any) => {
                                 {`Celebrates Cricket community`.toUpperCase()}
                             </Text>
                         </Box>
-                        <Box>
+                        <Box
+                            top={'8%'}
+
+                        >
                             <Text
                                 fontFamily={metropolis}
                                 color={'#fff'}
                                 alignSelf={'center'}
-                                bottom={5}>
+                            >
                                 {`@Sportain 2023`.toUpperCase()}
                             </Text>
                         </Box>
@@ -216,7 +223,7 @@ export const GetStarted = (props: any) => {
                 onPress={() => props.navigation.navigate('WhatsNext')}
                 p={4}
                 _pressed={{ bg: '#50B05F95' }}
-                bottom={'30%'}
+                bottom={'28%'}
                 // mb={'15%'}
                 bg={'#50B05F'}
                 alignSelf={'center'}

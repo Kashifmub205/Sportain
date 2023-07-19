@@ -21,15 +21,17 @@ export const Features = (props: any) => {
     const [code, setcode] = useState('');
 
     const handleCopyText = () => {
-        Clipboard.setString(code);
-        const success = Clipboard.hasString();
-        if (success) {
-            console.log('Text copied to clipboard!');
-            Toast.show({
-                description: 'Text copied to clipboard!',
-            });
-        } else {
-            console.log('Failed to copy text to clipboard!');
+        if (code) {
+            Clipboard.setString(code);
+            const success = Clipboard.hasString();
+            if (success) {
+                console.log('Text copied to clipboard!');
+                Toast.show({
+                    description: 'Text copied to clipboard!',
+                });
+            } else {
+                console.log('Failed to copy text to clipboard!');
+            }
         }
     };
 
@@ -73,6 +75,7 @@ export const Features = (props: any) => {
                             <Input
                                 p={1.5}
                                 value={code}
+                                editable={false}
                                 fontFamily={metropolisBold}
                                 onChangeText={text => setcode(text)}
                                 pl={4}
@@ -182,7 +185,11 @@ export const Features = (props: any) => {
                                                     // style={{ top: 10 }}
                                                     xml={muchmore}
                                                 />
-                                                <Box position="absolute" zIndex={10} bottom={0} width="100%">
+                                                <Box
+                                                    position="absolute"
+                                                    zIndex={10}
+                                                    bottom={0}
+                                                    width="100%">
                                                     <Heading
                                                         width="100%"
                                                         alignSelf="center"
@@ -190,8 +197,7 @@ export const Features = (props: any) => {
                                                         fontFamily={metropolisBold}
                                                         fontSize="md"
                                                         bottom={4}
-                                                        color="#fff"
-                                                    >
+                                                        color="#fff">
                                                         {item.text}
                                                     </Heading>
                                                 </Box>
@@ -207,7 +213,11 @@ export const Features = (props: any) => {
                                                     height={heightPercentageToDP(18)}
                                                     width={heightPercentageToDP(18)}
                                                 />
-                                                <Box position="absolute" zIndex={10} bottom={0} width="100%">
+                                                <Box
+                                                    position="absolute"
+                                                    zIndex={10}
+                                                    bottom={0}
+                                                    width="100%">
                                                     <Heading
                                                         width="100%"
                                                         alignSelf="center"
@@ -217,16 +227,13 @@ export const Features = (props: any) => {
                                                         fontSize="md"
                                                         px={2}
                                                         bottom={2}
-                                                        color="#fff"
-                                                    >
+                                                        color="#fff">
                                                         {item.text}
-
                                                     </Heading>
                                                 </Box>
                                             </Box>
                                         )}
                                     </Box>
-
 
                                     {/* </Box> */}
                                 </TouchableOpacity>

@@ -1,7 +1,4 @@
-import {
-    ImageBackground,
-    TouchableOpacity,
-} from 'react-native';
+import { ImageBackground, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { Box, Button, Heading, HStack, Text, VStack } from 'native-base';
 import { welcomeScreenbg } from '../assets/images';
@@ -12,24 +9,28 @@ import { heightPercentageToDP } from 'react-native-responsive-screen';
 
 export const WelcomeScreen = (props: any) => {
     const [selectedSport, setSelectedSport] = useState('');
-    console.log('hello tests')
+    console.log('hello tests');
     const renderSportItem = (sport: any, icon: any, label: any) => {
         const isSelected = selectedSport === sport;
+        const isCricket = sport === 'cricket';
         return (
-            <TouchableOpacity onPress={() => setSelectedSport(sport)}>
+            // <TouchableOpacity onPress={() => setSelectedSport(sport)}>
+            <Box>
+
                 <VStack justifyContent="center" alignItems="center">
                     <SvgXml xml={icon} />
                     <Text
                         mt={1}
                         color={'#fff'}
-                        fontStyle={isSelected ? 'italic' : 'normal'}
-                        fontFamily={isSelected ? metropolisBold : metropolis}
-                        fontSize={isSelected ? 'md' : 'sm'}
-                        fontWeight={isSelected ? 'bold' : 'normal'}>
+                        fontStyle={isCricket ? 'italic' : 'normal'}
+                        fontFamily={isCricket ? metropolisBold : metropolis}
+                        fontSize={isCricket ? 'lg' : 'sm'}
+                        fontWeight={isCricket ? 'extrabold' : 'normal'}>
                         {label}
                     </Text>
                 </VStack>
-            </TouchableOpacity>
+            </Box>
+            // </TouchableOpacity>
         );
     };
     return (
@@ -66,10 +67,8 @@ export const WelcomeScreen = (props: any) => {
                 </Box>
             </Box>
 
-
             <Box
                 bottom={'8%'}
-
                 height={heightPercentageToDP(15)}
                 justifyContent={'center'}
                 alignItems={'center'}>
@@ -98,7 +97,6 @@ export const WelcomeScreen = (props: any) => {
                     <SvgXml xml={arrow} />
                 </HStack>
             </Button>
-
 
             {/* </ImageBackground> */}
         </ImageBackground>
